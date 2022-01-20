@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+</head>
+<body>
+    <div id = "root"></div>              
+</body>
+<script type = "text/babel">
+    const App = () => {
+        
+        const onClick = () =>{
+            axios.get('https://jsonplaceholder.typicode.com/todos/1').then(response => {
+            setData(response.data);
+
+        });
+    };
+
+        return (
+            <div>
+                <div>
+                    <button onClick={onClick}> 불러오기 </button>
+                </div>    
+                {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />}
+            </div>
+        );
+    };
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+</script>
+
+</html>

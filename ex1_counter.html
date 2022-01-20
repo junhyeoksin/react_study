@@ -9,21 +9,28 @@
   <div id="root"></div>
 </body>
 <script type="text/babel">
-const root = document.getElementById("root");
-  function App() {
-    const [counter, setCounter] =  React.useState(null);
-    const onClick =( )=> {
-        setCounter((current) => current+1);
+ 
+  
+function App() {
+    const [counter, setCounter] =  React.useState(false);
+    const change =( )=> {
+        setCounter((current) => !current);
     };
+
     return (
       <div>
-        <div> counter : {counter}</div>
-        <div>작성{counter}</div>
-        <button onClick= {onClick}>버튼click</button>
+          <div>
+            
+          </div>
+          <button onClick= {change}> 
+          {counter ? "로그인": "로그아웃"} 
+          </button>
       </div>
     );
   }
-  
+
+
+  const root = document.getElementById("root");
   ReactDOM.render(<App />, root);
 </script>
 </html>
