@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
-
-/// 현재 수량을 입력 -> 구입할 수 있는 개수를 알려줌
-
 //Coin Tracker (json)
 function App() {
   const [loading, setLoading] = useState(true);
   //data를 state 에 넣는다
   const [coins, setCoins] = useState([]);
-  const [counter, setCounter] = useState(null);
-  const onChange = (event) => {
-    setCounter(event.target.value);
-  };
-
   useEffect(() => {
     fetch("https://api.coinpaprika.com/v1/tickers")
       .then((response) => response.json())
@@ -34,14 +26,6 @@ function App() {
           ))}
         </select>
       )}
-      <br />
-      <input
-        placeholder='수량을 입력하세요'
-        type='number'
-        value={counter}
-         
-        onChange={onChange}
-      ></input>
     </div>
   );
 }
