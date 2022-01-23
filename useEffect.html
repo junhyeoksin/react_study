@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+</head>
+<body>
+    <div id = "root"></div>              
+</body>
+<script type = "text/babel">
+    function Button(){
+
+        return <button>클릭</button>
+    };
+
+    function App() {
+    const [counter, setValue] = useState(0);
+    const [keyword, setKeyword] = useState("");
+
+    const onChange = (event) => setKeyword(event.target.value);
+    const onClick = () => setValue((prev) => prev + 1);
+
+    useEffect(()=> {
+        console.log("키워드 변화할 때 실행");
+    }, [counter]);
+    return (
+        <div>
+        <input 
+        type='text'
+        value={keyword}
+        onChange={onChange}
+        placeholder='검색하세요'
+        ></input>
+        <h1>{counter}</h1>
+        <Button onClick={onClick}>click me</Button>
+        </div>
+        );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+    </script>
+</html>
